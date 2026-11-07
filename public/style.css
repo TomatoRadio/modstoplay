@@ -1,0 +1,217 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+@font-face {
+    font-family: 'Noto Emoji';
+    unicode-range: U+1F1E6-1F1FF;
+    src: url(https://raw.githack.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf);
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/Roboto-VariableFont_wdth\,wght.ttf');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/Roboto-Italic-VariableFont_wdth\,wght.ttf');
+    font-style: italic;
+}
+
+body {
+    font-family: 'Noto Emoji', 'Roboto', sans-serif;
+    background-color: #444;
+    color: white;
+    text-shadow: 0.1em 0.1em 0em black;
+    width: 100%;
+    max-width: 1080px;
+    justify-self: center;
+    padding: 0em 1em 3em;
+}
+
+h1 {
+    width: 100%;
+    background-image:
+        linear-gradient(0deg, rgba(0, 0, 60, 0.5), transparent),
+        url('assets/sky.png');
+    padding: 2em 1em 1em;
+    background-size: auto;
+    background-repeat: repeat-x;
+    animation: 'scroll' 20s linear infinite;
+    border: white 0.1em solid;
+    border-top: none;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    box-shadow: 0em 0.1em 0em black;
+}
+
+@keyframes scroll {
+    0% {
+        background-position-x: 0px;
+    }
+    50% {
+        background-position-x: 772px;
+    }
+    100% {
+        background-position-x: 1544px;
+    }
+}
+
+var {
+    font-weight: bold;
+}
+
+section > fieldset {
+    background-color: #333;
+    padding: 2em;
+    display: flex;
+    flex-flow: column wrap balance;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+fieldset {
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+section > fieldset > legend {
+    background-image: linear-gradient(0deg, #333,#444);
+}
+
+legend {
+    padding: 0em 1em;
+    border-left: solid 0.2em white;
+    border-right: solid 0.2em white;
+    font-weight: bold;
+}
+
+fieldset > fieldset {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+legend > input[type=checkbox], legend > select {
+    margin-left: 1em;
+}
+
+button {
+    width: 100%;
+    padding: 1em;
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.5),transparent);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-shadow: 0.1em 0.1em 0.5em white;
+    border-radius: 1em;
+}
+
+button:active {
+    background-color: lightgray;
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.mod_list {
+    display: flex;
+    flex-flow: column;
+    gap: 1em;
+    max-height: 50em;
+    overflow-y: scroll;
+}
+
+figure {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: #333;
+    height: fit-content;
+    padding: 1em;
+    gap: 1em;
+    border-radius: 1em;
+    margin-right: 1em;
+    box-shadow:
+        0.1em 0.1em 0.2em rgba(0, 0, 0, 0.1);
+}
+
+figure > img {
+    width: 7em;
+    height: 7em;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 1em;
+    box-shadow: 0.1em 0.1em 0px black;
+}
+
+figcaption {
+    font-size: 2em;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    width: 100%;
+}
+
+figcaption > div {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.25em;
+    justify-content: space-between;
+}
+
+figcaption  a {
+    color: lightblue;
+    font-weight: bold;
+    width: fit-content;
+}
+
+figcaption  a:hover {
+    color: rgb(104, 194, 224);
+    font-weight: bold;
+    width: fit-content;
+}
+figcaption  a:active {
+    color: rgb(63, 157, 189);
+    font-weight: bold;
+    width: fit-content;
+}
+
+figcaption > div > p {
+    font-weight: bold;
+    font-size: 0.6em;
+    border-radius: 5em;
+    text-align: center;
+    padding: 0.1em 0.5em;
+    width: fit-content;
+    box-shadow: 0.1em 0.1em 0px black;
+}
+
+code {
+    background-color: #333;
+    border: white solid 0.01em;
+    padding: 0.15em 0.25em;
+    border-radius: 0.5em;
+}
+
+.badges {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    image-rendering: pixelated;
+    gap: 1em;
+}
+
+.badges img {
+    box-shadow: 0.2em 0.2em 0.25em black;
+    border-radius: 4px;
+}
+
+.story {background-color: hsl(130, 90%, 35%);}
+.gameplay {background-color: hsl(340, 90%, 45%);}
+.art {background-color: hsl(210, 90%, 45%);}
+.comedy {background-color: hsl(49, 90%, 45%);}
+.vanilla {background-color: hsl(268, 90%, 45%);}
+.playtime {background-color: hsl(29, 90%, 45%);}
+.language {background-color: hsl(325, 90%, 45%);}
+
+@media(max-width: 420px) {
+    figure {flex-flow: column nowrap;}
+}

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8">
+	<title>OMORI Mods to Play</title>
+    <link rel="stylesheet" type="text/css" href="style.css" charset="utf-8"/>
+    <!--<link rel="icon" href="img/TomatoRadioIcon.ico"/>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="functions.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1><em>"What OMORI mod should I play first?"</em></h1><br>
+        <p>If you found this site, you probably asked this question! This site is designed to let you configure what you're looking for in an OMORI mod, and we'll show you which mods you'll like to check out first!</p>
+    </header>
+    <br>
+    <main>
+        <section>
+            <fieldset>
+                <legend>Scalar Preferences</legend>
+                <fieldset>
+                    <legend>📖 Story Focus <input type="checkbox" id="story-check" name="story-check" checked onchange="flipBool(this)"> </legend>
+                    <var>Low <input type="range" id="story" name="story" min="1" max="5" step="1" value="3"> High</var>
+                    <caption>The focus the mod gives to its story.</caption>
+                </fieldset>
+                <fieldset>
+                    <legend>🎮 Gameplay Focus <input type="checkbox" id="gameplay-check" name="gameplay-check" checked onchange="flipBool(this)"> </legend>
+                    <var>Low <input type="range" id="gameplay" name="gameplay" min="1" max="5" step="1" value="3"> High</var>
+                    <caption>The focus the mod gives to its gameplay, mainly combat.</caption>
+                </fieldset>
+                <fieldset>
+                    <legend>🎨 Artistic Focus <input type="checkbox" id="art-check" name="art-check" checked onchange="flipBool(this)"></legend>
+                    <var>Low <input type="range" id="art" name="art" min="1" max="5" step="1" value="3"> High</var>
+                    <caption>The focus the mod gives to its art and music.</caption>
+                </fieldset>
+                <fieldset>
+                    <legend>🎭 Comedic Focus <input type="checkbox" id="comedy-check" name="comedy-check" checked onchange="flipBool(this)"></legend>
+                    <var>Low <input type="range" id="comedy" name="comedy" min="1" max="5" step="1" value="3"> High</var>
+                    <caption>The focus the mod gives to its humor and comedy.</caption>
+                </fieldset>
+                <fieldset>
+                    <legend>💡 Vanilla Focus <input type="checkbox" id="vanilla-check" name="vanilla-check" checked onchange="flipBool(this)"></legend>
+                    <var>Low <input type="range" id="vanilla" name="vanilla" min="1" max="5" step="1" value="3"> High</var>
+                    <caption>The focus the mod gives to the original game; how similar to OMORI it is.</caption>
+                </fieldset>
+                <fieldset>
+                    <legend>⌛ Playtime <input type="checkbox" id="playtime-check" name="playtime-check" checked onchange="flipBool(this)"></legend>
+                    <var>Low <input type="range" id="playtime" name="playtime" min="1" max="5" step="1" value="3"> High</var>
+                    <caption>The time is takes to complete the mod in full. These are rated relative to each other and the base game.</caption>
+                </fieldset>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Restrictions</legend>
+                <fieldset>
+                    <legend>🌐 In Language? 
+                        <select id="language" name="language">
+                            <option value="en">English</option>
+                            <option value="ja">日本語</option>
+                            <option value="ko">한국인</option>
+                            <option value="ru">Русский</option>
+                            <option value="zh">简体中文</option>
+                        </select> 
+                    </legend>
+                    <caption>If the mod has a translation for the selected language. Note that some mods may have translations for only certain releases.</caption>
+                </fieldset>
+            </fieldset>
+        </section>
+        <br>
+        <hr>
+        <br>
+        <section>
+            <button onclick="sortMods()">Show me my mods!</button>
+        </section>
+        <br>
+        <hr>
+        <br>
+        <section>
+            <h2>Recommended</h2>
+            <br>
+            <p>
+                This list is generated in ascending order from the following formula:<br>
+                Variables: <var>u</var> = User Preferences, <var>m</var> = Mod Statistics, <var>r</var> = 100 * Every Failed Restriction<br>
+                Match = 30 - Σ|<var>m</var>-<var>u</var>| - <var>r</var><br>
+                A higher number is a closer match.<br>
+            </p>
+            <br>
+            <div id="mod_list" class="mod_list">
+                <figure>
+                    <img src="assets/modicons/absentmind.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/absentmind" target="_blank">Absent Mind</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 M-High</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 Medium</p>
+                            <p class="vanilla">💡 M-Low</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/autumnbreak.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/autumnbreak" target="_blank">Autumn Break</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 M-Low</p>
+                            <p class="art">🎨 M-High</p>
+                            <p class="comedy">🎭 M-Low</p>
+                            <p class="vanilla">💡 High</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN JA KO RU ZH</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/basilsgrief.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/bg" target="_blank">Basil's Grief</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 Medium</p>
+                            <p class="art">🎨 M-Low</p>
+                            <p class="comedy">🎭 M-Low</p>
+                            <p class="vanilla">💡 M-High</p>
+                            <p class="playtime">⌛ M-Low</p>
+                            <p class="language">🌐 EN ZH</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/brokendreams.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/brokendreams" target="_blank">Broken Dreams</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 M-High</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 High</p>
+                            <p class="vanilla">💡 Medium</p>
+                            <p class="playtime">⌛ Medium</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/thedreamer.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/thedreamer" target="_blank">The Dreamer</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 M-Low</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 Low</p>
+                            <p class="vanilla">💡 M-High</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/expedition143.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/expedition" target="_blank">Expedition: 143</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 Medium</p>
+                            <p class="art">🎨 Medium</p>
+                            <p class="comedy">🎭 Low</p>
+                            <p class="vanilla">💡 Medium</p>
+                            <p class="playtime">⌛ Low</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/fallenhero.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/fallenheromod" target="_blank">Fallen Hero</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 M-Low</p>
+                            <p class="art">🎨 M-High</p>
+                            <p class="comedy">🎭 Medium</p>
+                            <p class="vanilla">💡 M-High</p>
+                            <p class="playtime">⌛ M-High</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/goldentintedsun.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/gts" target="_blank">Golden Tinted Sun</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Low</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 Medium</p>
+                            <p class="vanilla">💡 Low</p>
+                            <p class="playtime">⌛ Low</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/headspaceexpanded.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/headspaceexpanded" target="_blank">Headspace Expanded</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Medium</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 M-Low</p>
+                            <p class="comedy">🎭 Low</p>
+                            <p class="vanilla">💡 High</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/herosfeverdream.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/hfd" target="_blank">Hero's Fever Dream</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 Medium</p>
+                            <p class="art">🎨 M-Low</p>
+                            <p class="comedy">🎭 M-Low</p>
+                            <p class="vanilla">💡 M-High</p>
+                            <p class="playtime">⌛ Low</p>
+                            <p class="language">🌐 EN ZH</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/hikito.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/hikito" target="_blank">Hikito</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 M-High</p>
+                            <p class="art">🎨 M-High</p>
+                            <p class="comedy">🎭 M-High</p>
+                            <p class="vanilla">💡 Medium</p>
+                            <p class="playtime">⌛ M-Low</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/hospital.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/hospital" target="_blank">Hospital</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 Low</p>
+                            <p class="art">🎨 Medium</p>
+                            <p class="comedy">🎭 Low</p>
+                            <p class="vanilla">💡 M-High</p>
+                            <p class="playtime">⌛ Medium</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/lovetintedspark.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/lts" target="_blank">Love Tinted Spark</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Low</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 Medium</p>
+                            <p class="vanilla">💡 Low</p>
+                            <p class="playtime">⌛ Low</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/mariishome.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/mariishome" target="_blank">Mari is Home</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Medium</p>
+                            <p class="gameplay">🎮 Low</p>
+                            <p class="art">🎨 Medium</p>
+                            <p class="comedy">🎭 High</p>
+                            <p class="vanilla">💡 Low</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/rizzschool.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/rizzschool" target="_blank" style="font-size: 0.75em;">My Friends and I Were Enrolled into a Rizz School Without Our Knowledge?!?</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Low</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 M-High</p>
+                            <p class="comedy">🎭 High</p>
+                            <p class="vanilla">💡 Medium</p>
+                            <p class="playtime">⌛ M-Low</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/nemuri.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/nemuri" target="_blank">Nemuri</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Low</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 Medium</p>
+                            <p class="comedy">🎭 Low</p>
+                            <p class="vanilla">💡 High</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN ZH</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/nightsone.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/modsone" target="_blank">Nights.one</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Low</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 M-High</p>
+                            <p class="vanilla">💡 Low</p>
+                            <p class="playtime">⌛ M-High</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/ocbossrush.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/stupidocmod" target="_blank">OC Boss Rush</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Low</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 M-Low</p>
+                            <p class="vanilla">💡 Medium</p>
+                            <p class="playtime">⌛ M-High</p>
+                            <p class="language">🌐 EN ZH</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/omoriismissing.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/omoriismissing" target="_blank">Omori is Missing</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 M-High</p>
+                            <p class="gameplay">🎮 M-High</p>
+                            <p class="art">🎨 M-High</p>
+                            <p class="comedy">🎭 High</p>
+                            <p class="vanilla">💡 Low</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/vessel.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/vessel" target="_blank">"Omori" "Mod" Made to Appeal to "Omori" "Fans"</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Low</p>
+                            <p class="gameplay">🎮 M-Low</p>
+                            <p class="art">🎨 Medium</p>
+                            <p class="comedy">🎭 High</p>
+                            <p class="vanilla">💡 Low</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/bananapeel.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/bananapeel" target="_blank">Omori Slips on a Banana Peel</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Low</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 Medium</p>
+                            <p class="comedy">🎭 High</p>
+                            <p class="vanilla">💡 Low</p>
+                            <p class="playtime">⌛ Low</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/parallels.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/parallels" target="_blank">Parallels</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 Medium</p>
+                            <p class="art">🎨 Medium</p>
+                            <p class="comedy">🎭 Low</p>
+                            <p class="vanilla">💡 High</p>
+                            <p class="playtime">⌛ M-Low</p>
+                            <p class="language">🌐 EN ZH</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/reverie.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/reverie" target="_blank">Reverie</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 M-Low</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 Medium</p>
+                            <p class="vanilla">💡 M-High</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN JA RU ZH</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/rewritten.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/rewritten" target="_blank">Rewritten</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Medium</p>
+                            <p class="gameplay">🎮 Medium</p>
+                            <p class="art">🎨 Medium</p>
+                            <p class="comedy">🎭 High</p>
+                            <p class="vanilla">💡 Low</p>
+                            <p class="playtime">⌛ High</p>
+                            <p class="language">🌐 EN ZH</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/thatsummer.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/thatsummer" target="_blank">That Summer</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 Low</p>
+                            <p class="art">🎨 Medium</p>
+                            <p class="comedy">🎭 Low</p>
+                            <p class="vanilla">💡 Low</p>
+                            <p class="playtime">⌛ M-Low</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/summerwistful.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/summerwistful" target="_blank">Summer Wistful</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 Medium</p>
+                            <p class="art">🎨 M-High</p>
+                            <p class="comedy">🎭 Medium</p>
+                            <p class="vanilla">💡 Medium</p>
+                            <p class="playtime">⌛ M-Low</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/volcaniapeaks.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/volcanicpeaks" target="_blank">Volcania Peaks</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 Medium</p>
+                            <p class="gameplay">🎮 High</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 Medium</p>
+                            <p class="vanilla">💡 High</p>
+                            <p class="playtime">⌛ Medium</p>
+                            <p class="language">🌐 EN ZH</p>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/modicons/aworldwereallapartof.webp">
+                    <figcaption>
+                        <div>
+                            <a href="https://mods.one/mod/worldwerepartof" target="_blank">A World We're All a Part Of</a>
+                            <var>Unsorted</var>
+                        </div>
+                        <div>
+                            <p class="story">📖 High</p>
+                            <p class="gameplay">🎮 M-Low</p>
+                            <p class="art">🎨 High</p>
+                            <p class="comedy">🎭 High</p>
+                            <p class="vanilla">💡 M-Low</p>
+                            <p class="playtime">⌛ Low</p>
+                            <p class="language">🌐 EN</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+    <br>
+    <hr>
+    <br>
+    <footer>
+        <div class="badges">
+            <a href="https://tomatoradio.github.io/profile" target="_blank">
+                <img src="assets/tomatoradio.png" alt="Broadcast to you by TomatoRadio" width="176" height="30">
+            </a>
+            <a href="https://mods.one" target="_blank">
+                <img src="assets/github.png" alt="View Source on Github" width="176" height="30">
+            </a>
+            <a href="https://mods.one" target="_blank">
+                <img src="assets/mods_one.png" alt="Mods.one" width="176" height="30">
+            </a>
+        </div>
+        <br>
+        <p>I am operating this page under my own discretion, if you are the owner of a mod shown here and would like it removed or its statistics adjusted, please reach out to me on Discord at <code>@tomatoradio</code> or create an issue on this site's Github.</p>
+    </footer>
+</body>
+</html>
